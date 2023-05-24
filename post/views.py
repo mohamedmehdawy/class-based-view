@@ -1,18 +1,15 @@
 from django.shortcuts import render
+from django.views.generic import ListView, DetailView
+
 from .models import Post
 # Create your views here.
 
 
-def post_list(request):
-    posts = Post.objects.all()
+class PostList(ListView):
+    model = Post
     
-    print(posts)
+class PostDetail(DetailView):
+    model = Post
     
-    return
     
-def post_detail(request, pk):
-    post = Post.objects.get(id=pk)
     
-    print(post)
-    
-    return
