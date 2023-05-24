@@ -6,7 +6,7 @@ class Post(models.Model):
 
     title = models.CharField(max_length=200)
     content = models.TextField(max_length=1500)
-    image = models.ImageField(default='post-img/')
+    image = models.ImageField(upload_to='post-img/')
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -14,7 +14,7 @@ class Post(models.Model):
         verbose_name_plural = ("Posts")
 
     def __str__(self):
-        return self.name
+        return self.title
 
     def get_absolute_url(self):
         return reverse("Post_detail", kwargs={"pk": self.pk})
